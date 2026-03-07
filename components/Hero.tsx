@@ -73,7 +73,7 @@ export default function Hero() {
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
-              className=" xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold text-white w-[90%] leading-relaxed"
+              className=" xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold text-white w-[95%] leading-relaxed"
             >
               {"Maximize Your".split("").map((char, index) => (
                 <motion.span variants={textVariants} key={index}>
