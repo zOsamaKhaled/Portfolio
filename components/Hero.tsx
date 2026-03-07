@@ -134,6 +134,11 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.5 }}
               className="px-6 py-2 rounded-lg from-cyan-500 to-blue-500 bg-linear-to-r text-white flex items-center gap-2 group hover:bg-linear-to-l transition-colors duration-300"
+              onClick={() => {
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               Contact Me
               <Send className="group-hover:animate-ping group-hover:translate-x-2 duration-300" />
@@ -145,6 +150,11 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.5 }}
               className="px-6 py-2 rounded-lg border border-cyan-500 text-cyan-500  hover:bg-white hover:border-white transition-colors duration-300 flex items-center gap-2 group"
+              onClick={() => {
+                window.open(
+                  "https://drive.google.com/file/d/1FW1zkrwQcABYzEu7bs54SGMeySxMEaGm/view?usp=sharing",
+                );
+              }}
             >
               Download CV
               <FileUser className="group-hover:animate-ping group-hover:translate-x-2 duration-300" />
