@@ -118,7 +118,7 @@ export default function Works() {
               whileInView={{ opacity: 1 }}
               transition={{
                 ease: "linear",
-                duration: 10,
+                duration: 20,
                 repeat: Infinity,
               }}
             >
@@ -139,7 +139,7 @@ export default function Works() {
               whileInView={{ opacity: 1 }}
               transition={{
                 ease: "linear",
-                duration: 10,
+                duration: 20,
                 repeat: Infinity,
               }}
             >
@@ -159,7 +159,7 @@ export default function Works() {
           drag={isMobile ? "x" : false}
           dragConstraints={{ left: -dragWidth, right: 0 }}
           dragElastic={0.1}
-          className="flex gap-8 relative cursor-grab active:cursor-grabbing touch-action: pan-y"
+          className="flex gap-8 relative cursor-grab active:cursor-grabbing touch-action: pan-y will-change-transform"
         >
           {projects.map((project, i) => (
             <div
@@ -171,6 +171,9 @@ export default function Works() {
                   src={project.image}
                   alt={project.title}
                   fill
+                  sizes="(max-width:768px) 350px, 450px"
+                  quality={85}
+                  loading="lazy"
                   className="object-cover transition-all w-full h-[250px]  duration-3000 group-hover:scale-102 object-top group-hover:object-bottom "
                   draggable="false"
                 />
