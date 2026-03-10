@@ -1,4 +1,7 @@
-import { Briefcase, Calendar } from "lucide-react";
+import {
+  LuBriefcase as Briefcase,
+  LuCalendar as Calendar,
+} from "react-icons/lu";
 
 export default function Experience() {
   const experiences = [

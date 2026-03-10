@@ -1,18 +1,14 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { Float, Environment, Sparkles, Sphere } from "@react-three/drei";
-import { TypeAnimation } from "react-type-animation";
+import { Sparkles } from "@react-three/drei";
 import { motion, Variants } from "framer-motion";
 import {
-  FileUser,
-  Github,
-  Linkedin,
-  Mail,
-  MessageSquareText,
-  Send,
-} from "lucide-react";
-import { float } from "three/tsl";
+  LuFileUser as FileUser,
+  LuGithub as Github,
+  LuLinkedin as Linkedin,
+  LuSend as Send,
+} from "react-icons/lu";
 import { BsWhatsapp } from "react-icons/bs";
 
 export default function Hero() {

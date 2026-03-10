@@ -1,16 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { ExternalLink, Github } from "lucide-react";
+import {
+  LuExternalLink as ExternalLink,
+  LuGithub as Github,
+} from "react-icons/lu";
 import Image from "next/image";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-import * as RawGSAP from "gsap";
+
 import { projects, type Project } from "@/data/projects";
 import { useMediaQuery } from "react-responsive";
 import { useEffect } from "react";
-
-RawGSAP.default.registerPlugin(ScrollTrigger);
 
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { useRef } from "react";

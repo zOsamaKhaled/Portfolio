@@ -1,6 +1,11 @@
 "use client";
 
-import { Send, Mail, User, MessageSquare } from "lucide-react";
+import {
+  LuSend as Send,
+  LuMail as Mail,
+  LuUser as User,
+  LuMessageSquare as MessageSquare,
+} from "react-icons/lu";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { useRef, useState } from "react";
 

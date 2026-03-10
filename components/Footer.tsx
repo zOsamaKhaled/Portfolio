@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { Github, Linkedin, Mail, MessageCircleMore } from "lucide-react";
+import {
+  LuGithub as Github,
+  LuLinkedin as Linkedin,
+  LuMail as Mail,
+  LuMessageCircle as MessageCircleMore,
+} from "react-icons/lu";
 import { BsWhatsapp } from "react-icons/bs";
 
 export default function Footer() {

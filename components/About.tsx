@@ -1,8 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { motion, Variants } from "framer-motion";
 
@@ -29,7 +27,7 @@ import {
 
 import { MdTranslate, MdAnimation } from "react-icons/md";
 import { SiMui } from "react-icons/si";
-import { User } from "lucide-react";
+import { LuUser as User } from "react-icons/lu";
 import { BsCake2 } from "react-icons/bs";
 import {
   PiCertificate,
@@ -37,13 +35,8 @@ import {
   PiSealCheckFill,
 } from "react-icons/pi";
 import { CiGlobe } from "react-icons/ci";
-import { SlBadge } from "react-icons/sl";
 import { HiCodeBracket } from "react-icons/hi2";
 import { AiOutlineApi } from "react-icons/ai";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 const skills = [
   { name: "HTML5", icon: FaHtml5 },
