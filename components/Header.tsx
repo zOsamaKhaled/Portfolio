@@ -16,11 +16,13 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-xl border-b border-white/5">
+    <header className=" fixed top-0 w-full z-50 bg-black/10 backdrop-blur-xl border-b border-white/5">
+      {/* content */}
+
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <div className="text-2xl font-bold tracking-tighter bg-clip-text text-transparent bg-linear-to-r from-cyan-400 to-blue-500 relative z-50">
+        <div className="text-4xl font-bold tracking-tighter bg-clip-text text-transparent bg-linear-to-r from-cyan-400 to-blue-500 relative z-50 website-logo">
           <Link href="#hero" onClick={closeMobileMenu}>
-            Osama.
+            OK
           </Link>
         </div>
 

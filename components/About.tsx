@@ -142,13 +142,13 @@ export default function About() {
             className="flex  text-4xl md:text-5xl font-bold mb-4 "
           >
             {"About Me & Skills".split("").map((letter, index) => (
-              <motion.span
+              <motion.h2
                 className="inline-block"
                 key={index}
                 variants={textVariants}
               >
                 {letter === " " ? "\u00A0" : letter}
-              </motion.span>
+              </motion.h2>
             ))}
           </motion.div>
           <motion.div
@@ -180,15 +180,21 @@ export default function About() {
               </div>
               <div className="flex items-center">
                 <CiGlobe className="w-4 h-4 mr-2" />
-                <h2 className="md:text-md text-sm ">Egypt, live in KSA</h2>
+                <h2 className="md:text-md text-xs font-extralight ">
+                  Egypt, live in KSA
+                </h2>
               </div>
               <div className="flex items-center">
                 <BsCake2 className="w-4 h-4 mr-2" />
-                <h2 className="md:text-md text-sm ">25 Years Old</h2>
+                <h2 className="md:text-md text-xs font-extralight ">
+                  25 Years Old
+                </h2>
               </div>
               <div className="flex items-center">
                 <PiSealCheckFill className="w-4 h-4 mr-2" />
-                <h2 className="md:text-md text-sm ">Available for Work</h2>
+                <h2 className="md:text-md text-xs font-extralight ">
+                  Available for Work
+                </h2>
               </div>
               <User className="w-35 h-35 opacity-5 group-hover:opacity-30  transition-opacity duration-500 absolute bottom-0 right-0" />
             </motion.div>
@@ -205,19 +211,19 @@ export default function About() {
               </div>
               <div className="flex items-center">
                 <FaWordpress className="w-4 h-4 mr-2" />
-                <h2 className="md:text-md text-sm ">
+                <h2 className="md:text-md text-xs font-extralight ">
                   20+ Figma To Wordpress Projects Completed
                 </h2>
               </div>
               <div className="flex items-center">
                 <FaWordpress className="w-4 h-4 mr-2" />
-                <h2 className="md:text-md text-sm ">
+                <h2 className="md:text-md text-xs font-extralight ">
                   30+ Wordpress Projects Edited & Maintained
                 </h2>
               </div>
               <div className="flex items-center">
                 <HiCodeBracket className="w-4 h-4 mr-2" />
-                <h2 className="md:text-md text-sm ">
+                <h2 className="md:text-md text-xs font-extralight ">
                   +6 Projects (Developed Frontend with Laravel Blade)
                 </h2>
               </div>
@@ -236,7 +242,7 @@ export default function About() {
               <motion.span
                 variants={item}
                 key={skill.name}
-                className="skill-badge flex items-center xl:px-6 lg:px-3 px-2 py-3 rounded-2xl  bg-white/5 border border-white/10 text-white xl:font-medium lg:font-normal lg:text-sm hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-colors duration-300 shadow-sm cursor-default"
+                className="skill-badge flex items-center  xl:px-6 lg:px-3 px-4 py-3 rounded-2xl  bg-white/5 border border-white/10 text-white xl:font-medium lg:font-normal lg:text-sm font-extralight text-xs hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-colors duration-300 shadow-sm cursor-default"
               >
                 {skill.icon && <skill.icon className="w-4 h-4 mr-2" />}
                 {skill.name}

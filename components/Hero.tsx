@@ -48,13 +48,31 @@ export default function Hero() {
       animate={{ opacity: 1 }}
       transition={{ duration: 4 }}
       id="hero"
-      className="relative h-screen w-full max-w-7xl mx-auto flex  items-center justify-center overflow-hidden "
+      className="relative h-screen w-full mx-auto flex items-center justify-center overflow-hidden pt-20 "
     >
-      <div className="flex justify-between items-center flex-col lg:flex-row w-full  lg:gap-0 gap-10  px-6">
+      {/* gradient */}
+      <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_10%_10%,rgba(34,211,238,0.15),transparent_40%),radial-gradient(circle_at_90%_90%,rgba(59,130,246,0.15),transparent_20%)]" />
+
+      {/* stars */}
+      <div className="absolute inset-0 z-10">
+        <Canvas>
+          <Sparkles
+            count={80}
+            speed={0.4}
+            size={8}
+            scale={[10, 10, 20]}
+            color="#22d3ee"
+          />
+        </Canvas>
+      </div>
+
+      {/* content */}
+
+      <div className="flex justify-between max-w-7xl items-center z-20 flex-col lg:flex-row w-full  lg:gap-0 md:gap-6  gap-10  px-6">
         {/* Text Container */}
         <div className="w-full flex h-full flex-col gap-3 ">
           <div className="flex flex-col gap-3 ">
-            <h2>
+            <p>
               Hi, I'm
               <motion.span
                 variants={containerVariants}
@@ -68,8 +86,8 @@ export default function Hero() {
                   </motion.span>
                 ))}
               </motion.span>
-            </h2>
-            <motion.p
+            </p>
+            <motion.h2
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -105,7 +123,7 @@ export default function Hero() {
                   {char}
                 </motion.span>
               ))}
-            </motion.p>
+            </motion.h2>
             <motion.p
               variants={containerVariants}
               initial="hidden"
@@ -133,7 +151,7 @@ export default function Hero() {
               whileHover={{ scale: 1.05, cursor: "pointer" }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.5 }}
-              className="px-6 py-2 rounded-lg from-cyan-500 to-blue-500 bg-linear-to-r text-white flex items-center gap-2 group hover:bg-linear-to-l transition-colors duration-300"
+              className="md:px-6 px-4 py-2 rounded-lg from-cyan-500 to-blue-500 bg-linear-to-r text-white flex items-center gap-2 group hover:bg-linear-to-l transition-colors duration-300 text-sm"
               onClick={() => {
                 document
                   .getElementById("contact")
@@ -141,7 +159,7 @@ export default function Hero() {
               }}
             >
               Contact Me
-              <Send className="group-hover:animate-ping group-hover:translate-x-2 duration-300" />
+              <Send className="group-hover:animate-ping group-hover:translate-x-2 duration-300 w-4 h-4" />
             </motion.button>
             <motion.button
               initial={{ x: 60 }}
@@ -149,7 +167,7 @@ export default function Hero() {
               whileHover={{ scale: 1.05, cursor: "pointer" }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.5 }}
-              className="px-6 py-2 rounded-lg border border-cyan-500 text-cyan-500  hover:bg-white hover:border-white transition-colors duration-300 flex items-center gap-2 group"
+              className="md:px-6 px-4 py-2 rounded-lg border border-cyan-500 text-cyan-500  hover:bg-white hover:border-white transition-colors duration-300 flex items-center gap-2 group text-sm"
               onClick={() => {
                 window.open(
                   "https://drive.google.com/file/d/1FW1zkrwQcABYzEu7bs54SGMeySxMEaGm/view?usp=sharing",
@@ -157,7 +175,7 @@ export default function Hero() {
               }}
             >
               Download CV
-              <FileUser className="group-hover:animate-ping group-hover:translate-x-2 duration-300" />
+              <FileUser className="group-hover:animate-ping group-hover:translate-x-2 duration-300 w-4 h-4" />
             </motion.button>
           </motion.div>
         </div>
@@ -187,15 +205,15 @@ export default function Hero() {
                 type: "tween",
                 repeat: Infinity,
               }}
-              className="absolute lg:top-20 lg:left-10 md:top-20 md:left-40 top-10 left-20 z-10 "
+              className="absolute lg:top-20 lg:left-10 md:top-20 md:left-40 top-5 left-20 z-10 "
             >
               <img
                 src="/shape1.svg"
                 alt=""
-                className="lg:w-[200px] lg:h-[200px] md:w-[150px] md:h-[150px] w-[120px] h-[120px]  fill-white/10 "
+                className="lg:w-[200px] lg:h-[200px] md:w-[150px] md:h-[150px] w-[100px] h-[100px]  fill-white/10 "
               ></img>
-              <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:text-3xl md:text-2xl text-lg text-center text-black font-bold">
-                <span className="text-cyan-500 lg:text-5xl md:text-4xl text-2xl">
+              <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:text-3xl md:text-2xl text-md  text-center text-black font-bold">
+                <span className="text-cyan-500 lg:text-5xl md:text-4xl text-xl">
                   +35
                 </span>{" "}
                 <br />

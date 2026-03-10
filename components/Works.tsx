@@ -7,6 +7,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import * as RawGSAP from "gsap";
 import { projects, type Project } from "@/data/projects";
+import { useMediaQuery } from "react-responsive";
+import { useEffect } from "react";
 
 RawGSAP.default.registerPlugin(ScrollTrigger);
 
@@ -40,18 +42,45 @@ export default function Works() {
     },
   };
   const targetRef = useRef(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [dragWidth, setDragWidth] = useState(0);
+
+  useEffect(() => {
+    if (!sliderRef.current || !containerRef.current) return;
+
+    const sliderWidth = sliderRef.current.scrollWidth;
+    const containerWidth = containerRef.current.offsetWidth;
+
+    setDragWidth(sliderWidth - containerWidth);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
 
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   // تحويل نسبة السكروول لحركة أفقية
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
+  const x = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [isMobile ? "5%" : "15%", isMobile ? "-95%" : "-85%"],
+  );
 
+  function truncateWords(text: string, limit: number) {
+    const words = text.split(" ");
+    return words.length > limit
+      ? words.slice(0, limit).join(" ") + "..."
+      : text;
+  }
   return (
-    <section ref={targetRef} className="relative h-[300vh]" id="works">
-      <div className=" flex flex-col items-center mb-12">
-        <motion.div
+    <section
+      ref={targetRef}
+      className="relative md:h-[300vh] h-screen "
+      id="works"
+    >
+      <div className=" flex flex-col items-center ">
+        <motion.h2
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -67,7 +96,7 @@ export default function Works() {
               {letter === " " ? "\u00A0" : letter}
             </motion.span>
           ))}
-        </motion.div>
+        </motion.h2>
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -76,7 +105,10 @@ export default function Works() {
           className="w-24 h-1 bg-cyan-500 rounded-full "
         />
       </div>
-      <div className="sticky top-0 h-screen overflow-hidden flex items-center">
+      <div
+        ref={containerRef}
+        className="sticky top-0 h-screen overflow-hidden flex items-center pt-10"
+      >
         <div className="absolute rotate-10  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full text-[300px] font-bold text-white whitespace-nowrap flex flex-col justify-center items-center gap-10  ">
           <div className="overflow-hidden w-full whitespace-nowrap">
             <motion.div
@@ -121,48 +153,57 @@ export default function Works() {
             </motion.div>
           </div>
         </div>
-        <motion.div style={{ x }} className="flex gap-8 relative">
+        <motion.div
+          ref={sliderRef}
+          style={{ x: isMobile ? 0 : x }}
+          drag={isMobile ? "x" : false}
+          dragConstraints={{ left: -dragWidth, right: 0 }}
+          dragElastic={0.1}
+          className="flex gap-8 relative cursor-grab active:cursor-grabbing touch-action: pan-y"
+        >
           {projects.map((project, i) => (
             <div
               key={project.title}
-              className=" relative card w-[450px] h-[650px] group rounded-2xl overflow-hidden bg-black border border-white/10 hover:border-cyan-500/50 transition-all duration-700 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] flex flex-col"
+              className=" relative card md:w-[450px] w-[350px] md:h-[600px] h-[550px] group rounded-2xl overflow-hidden bg-black border border-white/10 hover:border-cyan-500/50 transition-all duration-700 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] flex flex-col"
             >
-              <div className="relative w-full h-[250px] overflow-hidden">
+              <div className="relative w-full md:h-[250px] h-[200px] overflow-hidden">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover transition-all w-full h-[250px] duration-3000 group-hover:scale-102 object-top group-hover:object-bottom "
+                  className="object-cover transition-all w-full h-[250px]  duration-3000 group-hover:scale-102 object-top group-hover:object-bottom "
                   draggable="false"
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-300" />
               </div>
-              <div className="p-6 flex flex-col flex-1">
+              <div className="md:p-6 p-4 flex flex-col flex-1">
                 <h3 className="text-xl font-bold mb-2 text-white group-hover:text-cyan-400 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-zinc-400 text-sm mb-6 flex-1 leading-relaxed">
-                  {project.description}
+                <p className="text-zinc-400 md:text-sm text-xs mb-6 flex-1 leading-relaxed">
+                  {truncateWords(project.description, 24)}
                 </p>
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2 items-start justify-start mb-6 h-[70px] overflow-y-auto scrollbar-thin scrollbar-thumb-cyan-500/40 hover:scrollbar-thumb-cyan-400 scrollbar-track-transparent pr-2 ">
                   {project.tags.map((tag: string) => (
                     <span
                       key={tag}
-                      className="text-xs px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-medium"
+                      className="text-xs flex items-center px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-medium"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
                 <div className="flex items-center gap-4 mt-auto">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    className="text-zinc-400 hover:text-white transition-colors flex items-center gap-2 text-sm font-medium"
-                    draggable="false"
-                  >
-                    <Github size={16} /> Code
-                  </a>
+                  {project.github === "#" ? null : (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      className="text-zinc-400 hover:text-white transition-colors flex items-center gap-2 text-sm font-medium"
+                      draggable="false"
+                    >
+                      <Github size={16} /> Code
+                    </a>
+                  )}
                   <a
                     href={project.link}
                     target="_blank"
