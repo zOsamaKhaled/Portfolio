@@ -157,22 +157,20 @@ export default function Hero() {
               Contact Me
               <Send className="group-hover:animate-ping group-hover:translate-x-2 duration-300 w-4 h-4" />
             </motion.button>
-            <motion.button
+            <motion.a
+              href="https://drive.google.com/file/d/1yyt6-7TgT3CmVc4imv589gZviQIryzot/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ x: 60 }}
               whileInView={{ x: 0 }}
               whileHover={{ scale: 1.05, cursor: "pointer" }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.5 }}
               className="md:px-6 px-4 py-2 rounded-lg border border-cyan-500 text-cyan-500  hover:bg-white hover:border-white transition-colors duration-300 flex items-center gap-2 group text-sm"
-              onClick={() => {
-                window.open(
-                  "https://drive.google.com/file/d/1FW1zkrwQcABYzEu7bs54SGMeySxMEaGm/view?usp=sharing",
-                );
-              }}
             >
               Download CV
               <FileUser className="group-hover:animate-ping group-hover:translate-x-2 duration-300 w-4 h-4" />
-            </motion.button>
+            </motion.a>
           </motion.div>
         </div>
 
