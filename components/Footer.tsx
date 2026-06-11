@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   LuGithub as Github,
   LuLinkedin as Linkedin,
@@ -16,10 +17,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-2 website-logo">
-            <Link href="#hero" className="inline-block mb-6">
-              <span className="text-6xl font-bold tracking-tighter bg-clip-text text-transparent bg-linear-to-r from-cyan-400 to-blue-500 ">
-                OK
-              </span>
+            <Link href="#hero" className="inline-block">
+              <Image src="/OK-Logo.png" alt="OK Logo" width={100} height={100} />
             </Link>
             <p className="text-zinc-500 leading-relaxed max-w-sm">
               Building premium, dynamic, and forward-thinking digital

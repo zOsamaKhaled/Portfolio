@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { LuMenu as Menu, LuX as X } from "react-icons/lu";
 
 export default function Header() {
@@ -20,9 +21,9 @@ export default function Header() {
       {/* content */}
 
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <div className="text-4xl font-bold tracking-tighter bg-clip-text text-transparent bg-linear-to-r from-cyan-400 to-blue-500 relative z-50 website-logo">
+        <div className="relative z-50">
           <Link href="#hero" onClick={closeMobileMenu}>
-            OK
+            <Image src="/OK-Logo.png" alt="OK Logo" width={60} height={60} />
           </Link>
         </div>
 
